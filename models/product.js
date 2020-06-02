@@ -23,12 +23,15 @@ const getProductsFromFile = callBack => {
 
 module.exports = class Product {
 
-    constructor(_title){
+    constructor(_title , _imageUrl , _price , _description){
         this.title = _title;
+        this.imageUrl = _imageUrl;
+        this.price = _price;
+        this.description = _description;
     }
 
     save(){
-        //products.push(this);
+        
         getProductsFromFile(products => {
             products.push(this);
             fs.writeFile(_path , JSON.stringify(products) , (error)=> {
