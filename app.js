@@ -11,6 +11,7 @@ const errorController = require('./controllers/error');
 //const rootDir = require('./util/path')
 
 const app = express();
+const sequelize = require('./util/database');
 
 //USE HANDLEBARS
 //const expressHbs = require('express-handlebars');
@@ -32,4 +33,11 @@ app.use('/admin', adminRoutes);
 app.use(shopRouting);
 
 app.use(errorController.get404);
-app.listen(3000);
+
+sequelize.sync().then(result => {
+    //console.log(result);
+    app.listen(3000);
+})
+.catch(err => {
+    console.log(err);
+})
