@@ -19,9 +19,11 @@ router.post('/cart-delete-item', shopController.postCartDeleteProduct);
 
 router.post('/create-order', shopController.postOrder);
 
-// router.get('/checkout' , shopController.getCheckout);
+router.get('/checkout' , shopController.getCheckout);
 
 router.get('/orders' , shopController.getOrders);
+
+router.get('/orders/:orderId', shopController.getInvoice);
 
 router.get('/products' , shopController.getProducts);
 
